@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 //importing useful node libraries
 const createError = require("http-errors");
 const path = require("path");
@@ -23,21 +24,27 @@ app.use(express.static(path.join(__dirname, "public"))); //serve static files
 app.use("/", indexRouter);
 app.use("/", usersRouter);
 
+async function main(){
+  await mongoose.connect("mongodb://127.0.0.1/skeleton")
+}
+main().catch((err)=>console.log(err))
+
+
 //error handlers
 app.use((req, res, next) => {
   next(createError(404));
 });
 
 app.use((err, req, res, next) => {
-    //set locals, only providing error in development
+  //set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("eng") === "development" ? err : {};
 
-//render the error page
+  //render the error page
   res.status(err.status || 500);
   res.render("error");
 });
 
-app.listen("3000",(req,res)=>{
-    console.log("listening 3000")
-})
+app.listen("3000", (req, res) => {
+  console.log("listening 3000");
+});
