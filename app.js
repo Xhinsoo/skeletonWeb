@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const User= require("./model/user");
+const Book = require("./model/book")
+
 //importing useful node libraries
 const createError = require("http-errors");
 const path = require("path");
@@ -24,11 +27,16 @@ app.use(express.static(path.join(__dirname, "public"))); //serve static files
 app.use("/", indexRouter);
 app.use("/", usersRouter);
 
-async function main(){
-  await mongoose.connect("mongodb://127.0.0.1/skeleton")
+async function main() {
+  await mongoose.connect("mongodb://127.0.0.1/skeleton");
 }
-main().catch((err)=>console.log(err))
+main().catch((err) => console.log(err));
 
+
+app.get("/show", async (req,res)=>{
+  const found = Book.findOne({title: "jungle"}).populate("user")
+  console.log(found)
+})
 
 //error handlers
 app.use((req, res, next) => {
