@@ -6,6 +6,11 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   user: String,
   age: Number,
+  book:[{
+    type: Schema.Types.ObjectId, ref: "Book"
+  }
+
+  ]
 });
 
 //compile model from schema using mongoose.model() method

@@ -34,7 +34,7 @@ main().catch((err) => console.log(err));
 
 
 app.get("/show", async (req,res)=>{
-  const found = Book.findOne({title: "jungle"}).populate("user")
+  const found = await Book.find({title:"beetle"}).populate("user").exec();
   console.log(found)
 })
 
