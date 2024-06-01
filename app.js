@@ -13,6 +13,7 @@ const asyncHandler = require("express-async-handler");
 //routes directory
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const catalogRouter = require("./routes/catalog");
 //set views directory and view engine to ejs
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -26,17 +27,15 @@ app.use(express.static(path.join(__dirname, "public"))); //serve static files
 
 //adding route handlers to req handling chain
 app.use("/", indexRouter);
-app.use("/", usersRouter);
+app.use("/users", usersRouter);
+app.use("/catalog",catalogRouter);
 
 async function main() {
   await mongoose.connect("mongodb://127.0.0.1/skeleton");
 }
 main().catch((err) => console.log(err));
 
-app.get("/show", async (req, res) => {
-  const found = await Book.find({ title: "beetle" }).populate("user").exec();
-  console.log(found);
-});
+
 
 //error handlers
 app.use((req, res, next) => {
