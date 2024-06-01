@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../model/user");
+const User = require("../model/author");
 const Book = require("../model/book");
 
 router.get("/index", async (req, res, next) => {
@@ -10,14 +10,10 @@ router.get("/index", async (req, res, next) => {
 
   // const book =  new Book({title:"jungle", user: "665a32435648421704d21803"})
   // await book.save();
-  const find = await Book.find({user: "665a32435648421704d21803"})
-  console.log(find)
-
+  const find = await Book.find({ user: "665a32435648421704d21803" });
+  console.log(find);
 
   res.render("index", { title: "Express" });
 });
-
-
-
 
 module.exports = router;

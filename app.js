@@ -1,14 +1,15 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const User= require("./model/user");
-const Book = require("./model/book")
+const User = require("./model/author");
+const Book = require("./model/book");
 
 //importing useful node libraries
 const createError = require("http-errors");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const asyncHandler = require("express-async-handler");
 //routes directory
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -32,11 +33,10 @@ async function main() {
 }
 main().catch((err) => console.log(err));
 
-
-app.get("/show", async (req,res)=>{
-  const found = await Book.find({title:"beetle"}).populate("user").exec();
-  console.log(found)
-})
+app.get("/show", async (req, res) => {
+  const found = await Book.find({ title: "beetle" }).populate("user").exec();
+  console.log(found);
+});
 
 //error handlers
 app.use((req, res, next) => {
