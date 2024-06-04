@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../model/author");
-const Book = require("../model/book");
+const User = require("../models/author");
+const Book = require("../models/book");
 
 router.get("/index", async (req, res, next) => {
-
   res.render("index", { title: "Express" });
 });
 

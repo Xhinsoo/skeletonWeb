@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const User = require("./model/author");
-const Book = require("./model/book");
+const mongoDb ="mongodb+srv://xmrwow:Sabina1992@cluster0.pklccub.mongodb.net/loocal_library?retryWrites=true&w=majority&appName=cluster0"
+const User = require("./models/author");
+const Book = require("./models/book");
 
 //importing useful node libraries
 const createError = require("http-errors");
@@ -28,14 +29,12 @@ app.use(express.static(path.join(__dirname, "public"))); //serve static files
 //adding route handlers to req handling chain
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/catalog",catalogRouter);
+app.use("/catalog", catalogRouter);
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1/skeleton");
+  await mongoose.connect(mongoDb);
 }
 main().catch((err) => console.log(err));
-
-
 
 //error handlers
 app.use((req, res, next) => {
