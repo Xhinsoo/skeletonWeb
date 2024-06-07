@@ -1,0 +1,22 @@
+<%- include("../partials/head")  %><%- include("../partials/nav") %>
+    <h2>
+      <%= title %>
+    </h2>
+    <!-- action empty string sends data to same page -->
+    <form action="" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Genre:</label>
+        <input
+          type="type"
+          class="form-control"
+          placeholder="Fantasy, Poetry etc."
+          name="name"
+        />
+      </div>
+   
+   
+       
+   
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <%- include("../partials/foot") %>

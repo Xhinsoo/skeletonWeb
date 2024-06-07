@@ -16,7 +16,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const catalogRouter = require("./routes/catalog");
 //set views directory and view engine to ejs
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views/pages"));
 app.set("view engine", "ejs");
 
 //fn call to add imported middleware libraries into req handling chain
@@ -41,15 +41,15 @@ app.use((req, res, next) => {
   next(createError(404));
 });
 
-app.use((err, req, res, next) => {
-  //set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("eng") === "development" ? err : {};
+// app.use((err, req, res, next) => {
+//   // //set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get("eng") === "development" ? err : {};
 
-  //render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
+//   // //render the error page
+//   res.status(err.status || 500);
+//   res.render("error");
+// });
 
 app.listen("3000", (req, res) => {
   console.log("listening 3000");

@@ -34,7 +34,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 
 // Display list of all books.
 exports.book_list = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Book list");
+  res.render("booklist", {title: "All books"});
 });
 
 // Display detail page for a specific book.
@@ -44,7 +44,7 @@ exports.book_detail = asyncHandler(async (req, res, next) => {
 
 // Display book create form on GET.
 exports.book_create_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Book create GET");
+  res.render("book", {title: "Create book"});
 });
 
 // Handle book create on POST.

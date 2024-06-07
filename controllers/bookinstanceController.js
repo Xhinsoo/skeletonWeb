@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 // Display list of all BookInstances.
 exports.bookinstance_list = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: BookInstance list");
+  res.render("bookinstancelist", {title: "All book instances"});
 });
 
 // Display detail page for a specific BookInstance.
@@ -13,7 +13,7 @@ exports.bookinstance_detail = asyncHandler(async (req, res, next) => {
 
 // Display BookInstance create form on GET.
 exports.bookinstance_create_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: BookInstance create GET");
+  res.render("bookinstance", {title:"Create book instance"});
 });
 
 // Handle BookInstance create on POST.

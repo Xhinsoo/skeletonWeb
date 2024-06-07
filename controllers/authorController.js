@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 // Display list of all Authors.
 exports.author_list = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Author list");
+  res.render("authorlist", {title:"All Authors"});
 });
 
 // Display detail page for a specific Author.
@@ -13,7 +13,7 @@ exports.author_detail = asyncHandler(async (req, res, next) => {
 
 // Display Author create form on GET.
 exports.author_create_get = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Author create GET");
+  res.render("author", {title:"Create author"});
 });
 
 // Handle Author create on POST.

@@ -1,0 +1,28 @@
+<%- include("../partials/head") %> <%- include("../partials/nav") %>
+
+<div class="card mt-3">
+  <div class="card-header">Hello readers!</div>
+  <div class="card-body">
+    <p class="card-text">
+      Welcome to <%=title %>, a very basic Express website developed as a
+      tutorial example on the Mozilla Developer Network.
+    </p>
+  </div>
+</div>
+
+<div class="card mt-3" style="width: 18rem">
+  <div class="card-header">Catalogue</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Book count: <%=book_count %> <a href="http://localhost:3000/catalog/books">All books</a></li>
+    <li class="list-group-item">
+      Book instance count: <%=book_instance_count %> <a href="http://localhost:3000/catalog/bookinstances">All book intances</a>
+    </li>
+    <li class="list-group-item">
+      Book instance available count: <%= book_instance_available_count %>
+    </li>
+    <li class="list-group-item">Author count: <%= author_count %> <a href="http://localhost:3000/catalog/authors">All authors</a></li>
+    <li class="list-group-item">Genre count: <%= genre_count %> <a href="http://localhost:3000/catalog/genres">All genres</a></li>
+  </ul>
+</div>
+
+<%- include("../partials/foot") %>

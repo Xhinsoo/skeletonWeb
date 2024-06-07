@@ -4,7 +4,7 @@ const { body, validationResult } = require("express-validator");
 
 // Display list of all Genre.
 exports.genre_list = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Genre list");
+  res.render("genrelist", {title: "All Genre"});
 });
 
 // Display detail page for a specific Genre.
@@ -17,7 +17,6 @@ exports.genre_create_get = (req, res, next) => {
   res.render("genre", { title: "Create Genre" });
 };
 
-// Handle Genre create on POST.
 // Handle Genre create on POST.
 exports.genre_create_post = [
   // Validate and sanitize the name field.
@@ -33,6 +32,7 @@ exports.genre_create_post = [
 
     // Create a genre object with escaped and trimmed data.
     const genre = new Genre({ name: req.body.name });
+    console.log(genre)
 
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values/error messages.
