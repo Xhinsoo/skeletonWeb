@@ -50,7 +50,7 @@ exports.genre_create_post = [
         .exec();
       if (genreExists) {
         // Genre exists, redirect to its detail page.
-        res.redirect(genreExists.url);
+        res.redirect("http://localhost:3000/catalog/genre/create");
       } else {
         await genre.save();
         // New genre saved. Redirect to genre detail page.
