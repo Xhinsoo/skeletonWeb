@@ -1,0 +1,11 @@
+<%- include("../partials/head")  %><%- include("../partials/nav") %>
+<% if(existingUser){ %>
+    <%=existingUser %>
+<% } else {%> 
+ <%= genreExists._id %>
+ <%= genreExists.name %>
+   <% } %>
+       
+   
+  
+    <%- include("../partials/foot") %>

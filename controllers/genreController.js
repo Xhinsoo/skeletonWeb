@@ -9,7 +9,10 @@ exports.genre_list = asyncHandler(async (req, res, next) => {
 
 // Display detail page for a specific Genre.
 exports.genre_detail = asyncHandler(async (req, res, next) => {
-  res.send(`NOT IMPLEMENTED: Genre detail: ${req.params.id}`);
+  const _id = req.params.id
+  const name = await Genre.findOne({_id})
+  console.log(name)
+  res.render("genredetail", {_id});
 });
 
 // Display Genre create form on GET.
@@ -50,11 +53,13 @@ exports.genre_create_post = [
         .exec();
       if (genreExists) {
         // Genre exists, redirect to its detail page.
-        res.redirect("http://localhost:3000/catalog/genre/create");
+        const {_id, name} = genreExists
+        const existingUser = `${_id} already exists`
+        res.render("genredetail", {existingUser, genreExists})
       } else {
         await genre.save();
         // New genre saved. Redirect to genre detail page.
-        res.redirect(genre.url);
+        res.redirect("http://localhost:3000/catalog/genres/");
       }
     }
   }),
