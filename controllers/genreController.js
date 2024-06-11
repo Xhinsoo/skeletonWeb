@@ -4,7 +4,9 @@ const { body, validationResult } = require("express-validator");
 
 // Display list of all Genre.
 exports.genre_list = asyncHandler(async (req, res, next) => {
-  res.render("genrelist", {title: "All Genre"});
+  const allGenre = await Genre.find({})
+
+  res.render("genrelist", {allGenre});
 });
 
 // Display detail page for a specific Genre.

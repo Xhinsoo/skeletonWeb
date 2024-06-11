@@ -1,4 +1,16 @@
-<%- include("../partials/head")  %><%- include("../partials/nav") %>
-<h2><%= title %></h2>
+<%- include("../partials/head") %><%- include("../partials/nav") %> <% for(let
+genre of allGenre){ %>
 
- %><%- include("../partials/foot") %>
+<div class="card mt-2" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title"><%= genre.name%></h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">
+      <a href="http://localhost:3000/catalog/genre/genredetail>">Details</a>
+    </h6>
+    <form action="http://localhost:3000/catalog/genres" method = "POST">
+
+        <button>Delete</button>       
+    </form>
+  </div>
+</div>
+<% } %> %><%- include("../partials/foot") %>
