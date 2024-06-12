@@ -5,16 +5,14 @@ const { body, validationResult } = require("express-validator");
 // Display list of all Genre.
 exports.genre_list = asyncHandler(async (req, res, next) => {
   const allGenre = await Genre.find({})
-
   res.render("genrelist", {allGenre});
 });
 
 // Display detail page for a specific Genre.
 exports.genre_detail = asyncHandler(async (req, res, next) => {
-  const _id = req.params.id
-  const name = await Genre.findOne({_id})
-  console.log(name)
-  res.render("genredetail", {_id});
+  const id = req.params.id
+  const genreDetail = await Genre.findOne({_id: id})
+  res.render("genredetail", {genreDetail});
 });
 
 // Display Genre create form on GET.
@@ -50,18 +48,15 @@ exports.genre_create_post = [
     } else {
       // Data from form is valid.
       // Check if Genre with same name already exists.
-      const genreExists = await Genre.findOne({ name: req.body.name })
+      const genreDetail = await Genre.findOne({ name: req.body.name })
         .collation({ locale: "en", strength: 2 })
         .exec();
-      if (genreExists) {
-        // Genre exists, redirect to its detail page.
-        const {_id, name} = genreExists
-        const existingUser = `${_id} already exists`
-        res.render("genredetail", {existingUser, genreExists})
+      if(genreDetail) {
+        res.render("genredetail", {genreDetail})
       } else {
         await genre.save();
-        // New genre saved. Redirect to genre detail page.
-        res.redirect("http://localhost:3000/catalog/genres/");
+        // // New genre saved. Redirect to genre detail page.
+        res.redirect(`http://localhost:3000/catalog/genre/${genre._id}`);
       }
     }
   }),

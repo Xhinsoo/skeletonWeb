@@ -1,11 +1,17 @@
 <%- include("../partials/head")  %><%- include("../partials/nav") %>
-<% if(existingUser){ %>
-    <%=existingUser %>
-<% } else {%> 
- <%= genreExists._id %>
- <%= genreExists.name %>
-   <% } %>
-       
-   
+
+
+
+  <div class="card mt-4" style="width: 18rem;">
+    <div class="card-body">
+      <p class="card-text"><%= genreDetail.name %> :</p>
+      <p class="card-text"><%= genreDetail._id%></p>
+    </div>
+  </div>
+  
+
+  <form action="http://localhost:3000/catalog/genres" method = "POST">
+      <button>Delete</button>       
+  </form>
   
     <%- include("../partials/foot") %>
