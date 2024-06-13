@@ -1,10 +1,8 @@
 <%- include("../partials/head") %><%- include("../partials/nav") %> 
 
-<form action="http://localhost:3000/catalog/genre/<%=genreDetail._id%>>/update" method = "POST">
+<form action="http://localhost:3000/catalog/genre/<%=genreDetail._id%>/update" method = "POST">
     <textarea name="name" id="name"><%= genreDetail.name%></textarea>
-    <textarea name="id" id="id"><%= genreDetail._id%></textarea>
-    <button>Edit</button>
-    <button>Delete</button>       
+    <button>Edit</button>     
 </form>
 
 %><%- include("../partials/foot") %>

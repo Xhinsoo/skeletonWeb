@@ -15,6 +15,14 @@ exports.genre_detail = asyncHandler(async (req, res, next) => {
   res.render("genredetail", {genreDetail});
 });
 
+
+// Display detail page for a specific Genre.
+exports.genre_detail_post = asyncHandler(async (req, res, next) => {
+  const id = req.params.id
+  const genreDelete = await Genre.findOneAndDelete({_id: id})
+  res.redirect("http://localhost:3000/catalog/genres");
+});
+
 // Display Genre create form on GET.
 exports.genre_create_get = (req, res, next) => {
   res.render("genre", { title: "Create Genre" });
@@ -69,7 +77,10 @@ exports.genre_delete_get = asyncHandler(async (req, res, next) => {
 
 // Handle Genre delete on POST.
 exports.genre_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Genre delete POST");
+  const id = req.params.id
+  console.log(id)
+  const deleteGenre = await Genre.findByIdAndDelete({_id:id})
+  // res.redirect("/genres");
 });
 
 // Display Genre update form on GET.
@@ -82,7 +93,9 @@ exports.genre_update_get = asyncHandler(async (req, res, next) => {
 
 // Handle Genre update on POST.
 exports.genre_update_post = asyncHandler(async (req, res, next) => {
-  const genreUpdate = req.body;
-  console.log(genreUpdate)
-  // res.send(req.body);
+  const id = req.params.id
+  let genre = await Genre.findOne({_id: id})
+  genre.name = req.body.name
+  await genre.save()
+  res.redirect("http://localhost:3000/catalog/genres")
 });

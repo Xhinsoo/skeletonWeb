@@ -22,7 +22,7 @@ app.set("view engine", "ejs");
 //fn call to add imported middleware libraries into req handling chain
 app.use(logger("xhin"));
 app.use(express.json()); //populate req.body
-app.use(express.urlencoded({ extended: false })); //populate req.body
+app.use(express.urlencoded({ extended: true })); //populate req.body
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public"))); //serve static files
 

@@ -1,5 +1,5 @@
-<%- include("../partials/head") %><%- include("../partials/nav") %> <% for(let
-genre of allGenre){ %>
+<%- include("../partials/head") %><%- include("../partials/nav") %> 
+<% for(let genre of allGenre){ %>
 
 <div class="card mt-2" style="width: 18rem">
   <div class="card-body">
@@ -10,4 +10,6 @@ genre of allGenre){ %>
    
   </div>
 </div>
-<% } %> %><%- include("../partials/foot") %>
+<% } %> %>
+<a href="http://localhost:3000/catalog/genre/create">New Genre</a>
+<%- include("../partials/foot") %>
