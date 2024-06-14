@@ -1,5 +1,26 @@
 <%- include("../partials/head")  %><%- include("../partials/nav") %>
 <h2><%= title %></h2>
+<% for(let instances of allBookInstances){ %>
+
+    <div class="card" style="width: 18rem">
+    <div class="card-body">
+        <h5 class="card-title">Book instances:<%=instances.title %>:</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"> Imprint:<%=instances.imprint %> </h6>
+        <% if(instances.status =="Available"){ %>
+            <p class="success"> Status:<%=instances.status %> </p>
+            <% } else if(instances.status =="Maintenance"){%>
+            <p class="danger"> Status:<%=instances.status %> </p>
+            <% }else{ %>
+            <p class="warning"> Status: <%=instances.status %>  </p>
+        <% } %>
+        <!-- due back date -->
+        <% if(instances.status != "Available"){ %>
+            <p> <%= instances.due_back %></p>    
+        <%  }%>
+    </div>
+    </div>
+
+<%} %>
 
 
  %><%- include("../partials/foot") %>

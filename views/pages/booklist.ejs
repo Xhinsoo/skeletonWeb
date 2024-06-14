@@ -1,5 +1,7 @@
-<%- include("../partials/head") %> <%- include("../partials/nav") %> <%= title
-%> <% for(let book of allBooks){ %>
+<%- include("../partials/head") %> <%- include("../partials/nav") %> 
+<h1><%= title%> 
+</h1>
+<% for(let book of allBooks){ %>
 <div class="card" style="width: 18rem">
   <div class="card-body">
     <h5 class="card-title">Book title:<%=book.title %>:</h5>
