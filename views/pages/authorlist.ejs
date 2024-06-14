@@ -1,3 +1,11 @@
 <%- include("../partials/head") %> <%- include("../partials/nav") %>
 <h2><%= title %></h2>
+<% for(let author of allAuthors){ %>
+<div class="card" style="width: 18rem">
+    <div class="card-body">
+      
+      <a href="author.url"><%=author.name%> </a>: DOB: <%=author.date_of_birth%>
+    </div>
+  </div>
+  <% } %>
 <%- include("../partials/foot") %>

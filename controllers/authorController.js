@@ -1,9 +1,11 @@
-const user = require("../models/author");
+const Author = require("../models/author");
 const asyncHandler = require("express-async-handler");
 
 // Display list of all Authors.
 exports.author_list = asyncHandler(async (req, res, next) => {
-  res.render("authorlist", {title:"All Authors"});
+  const allAuthors = await Author.find().sort({family_name:1});
+  console.log(allAuthors)
+  res.render("authorlist", {title:"Author List", allAuthors});
 });
 
 // Display detail page for a specific Author.
