@@ -15,7 +15,7 @@
         <% } %>
         <!-- due back date -->
         <% if(instances.status != "Available"){ %>
-            <p> <%= instances.due_back %></p>    
+            <p>Due back: <%= instances.due_back_formatted %></p>    
         <%  }%>
     </div>
     </div>
