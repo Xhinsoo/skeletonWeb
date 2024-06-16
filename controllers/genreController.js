@@ -1,4 +1,5 @@
 const Genre = require("../models/genre");
+const Book = require("../models/book");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
@@ -10,9 +11,15 @@ exports.genre_list = asyncHandler(async (req, res, next) => {
 
 // Display detail page for a specific Genre.
 exports.genre_detail = asyncHandler(async (req, res, next) => {
-  const id = req.params.id
-  const genreDetail = await Genre.findOne({_id: id})
-  res.render("genredetail", {genreDetail});
+  // const id = req.params.id
+  // const genreDetail = await Genre.findOne({_id: id})
+  // res.render("genredetail", {genreDetail});
+  const [genre, booksInGenre] = await Promise.all([
+    Genre.findById(req.params.id),
+    Book.find({genre:req.params.id},"title summary")
+  ])
+  console.log(booksInGenre)
+  res.render("genreDetail", {title: "Genre Detail", genre, genreBooks: booksInGenre})
 });
 
 

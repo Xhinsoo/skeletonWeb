@@ -1,15 +1,19 @@
 <%- include("../partials/head")  %><%- include("../partials/nav") %>
 
 
-
+<h1><%=genre.name %></h1>
+<% if(genreBooks.length >0){ %>
+  <% for(let book of genreBooks){ %>
   <div class="card mt-4" style="width: 18rem;">
     <div class="card-body">
-      <p class="card-text"><%= genreDetail.name %> :</p>
-      <p class="card-text"><%= genreDetail._id%></p>
+      <p class="card-text"><%= book.title %> :</p>
+      <p class="card-text"><%= book.summary%></p>
     </div>
   </div>
+  <% } %>
+  <% } %>
   
-  <a href="http://localhost:3000/catalog/genre/<%=genreDetail._id%>/update"> Edit</a>
+  <a href="http://localhost:3000/catalog/genre/<%=genre._id%>/update"> Edit</a>
   <form action="" method = "POST">
     <button>Delete</button></form>
     <%- include("../partials/foot") %>
