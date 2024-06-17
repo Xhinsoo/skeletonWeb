@@ -1,0 +1,31 @@
+<%- include("../partials/head") %> <%- include("../partials/nav") %> 
+<h1><%= book.title%> 
+</h1>
+
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">Title: <%=book.author.name %>:</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary"> summary:
+      <%=book.summary%>
+    </h6>
+    <p>ISBN:  <%=book.isbn  %> </p>
+
+    <% for(let val of book.genre){ %>
+      <p>Genre:<%= val.name %> </p>
+    <% } %> 
+
+    <% for(let val in bookInstances){ %>
+      <%if(val.status =="Available"){%>
+        <p><%=val.status %></p>
+        <% } %>
+    <% } %>
+
+    
+  </div>
+</div>
+
+
+
+<a href="http://localhost:3000/catalog/book/create">New Book</a>
+
+<%- include("../partials/foot") %>
