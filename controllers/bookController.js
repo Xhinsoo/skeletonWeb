@@ -47,13 +47,12 @@ exports.book_detail = asyncHandler(async (req, res, next) => {
     BookInstance.find({ book: req.params.id }).exec(),
   ]);
 
-  // if(book === null){
-  //   const err = new Error("book not found");
-  //   err.status = 404;
-  //   return next(err)
-  // }
-  // console.log(book.author, book.genre, "1")
-  console.log( book,"1")
+  if(book === null){
+    const err = new Error("book not found");
+    err.status = 404;
+    return next(err)
+  }
+
 
 
   res.render("bookdetail",{title:book.title, book, bookInstances});
