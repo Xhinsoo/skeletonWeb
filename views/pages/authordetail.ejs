@@ -1,0 +1,13 @@
+<%- include("../partials/head") %> <%- include("../partials/nav") %> 
+<h1><%= author.name%></h1>
+
+<p><%=author.date_of_birth %> - <%=author.date_of_death %></p>
+<% if(allBooksByAuthor.length >0) {%>
+        <%for(let book of allBooksByAuthor){%>
+            <%= book.title %>
+        <% } %>
+<% } %>
+
+<a href="http://localhost:3000/catalog/author/create">New author</a>
+
+<%- include("../partials/foot") %>

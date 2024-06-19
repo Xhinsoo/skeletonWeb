@@ -4,7 +4,9 @@
 <div class="card" style="width: 18rem">
     <div class="card-body">
       
-      <a href="author.url"><%=author.name%> </a>: DOB: <%=author.date_of_birth%>
+      <%=author.name%> </a>: DOB: <%=author.date_of_birth%>
+      <a href="http://localhost:3000/catalog/author/<%=author._id%>">Details</a>
+
     </div>
   </div>
   <% } %>
