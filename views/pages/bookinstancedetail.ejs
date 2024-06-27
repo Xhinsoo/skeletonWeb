@@ -1,7 +1,7 @@
 <%- include("../partials/head")  %><%- include("../partials/nav") %>
 
 <h1>ID: <%=bookInstance._id%></h1>
-<p>Book title: <%= bookInstance.book.title %></p>
+<p> <a href="<%=bookInstance.book.url%>"> Book title: <%= bookInstance.book.title %></p></a>
 <p>Book imprint: <%= bookInstance.imprint %></p>
 
 <% if(bookInstance.status == "Available"){ %>
