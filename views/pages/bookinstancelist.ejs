@@ -4,8 +4,8 @@
 
     <div class="card" style="width: 18rem">
     <div class="card-body">
-        <h5 class="card-title">Book instances:<%=instances.title %>:</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary"> Imprint:<%=instances.imprint %> </h6>
+        <h5 class="card-title">Book instances: <a href="http://localhost:3000/catalog/bookinstance/<%=instances._id%>"><%=instances.book.title %></a></h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"> Imprint: <%=instances.imprint %> </h6>
         <% if(instances.status =="Available"){ %>
             <p class="success"> Status:<%=instances.status %> </p>
             <% } else if(instances.status =="Maintenance"){%>

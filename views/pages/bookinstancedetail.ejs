@@ -1,0 +1,22 @@
+<%- include("../partials/head")  %><%- include("../partials/nav") %>
+
+<h1>ID: <%=bookInstance._id%></h1>
+<p>Book title: <%= bookInstance.book.title %></p>
+<p>Book imprint: <%= bookInstance.imprint %></p>
+
+<% if(bookInstance.status == "Available"){ %>
+    Status: <%=bookInstance.status %>
+<% } else if(bookInstance =="Maintenance"){ %>
+    Status: <%=bookInstance.status %>
+<% }else{ %>
+    Status: <%=bookInstance.status %>
+<% } %>
+
+<% if(bookInstance.status != "Available"){ %>
+  Due back: <%=bookInstance.due_back_formatted %>
+<% } %>
+
+
+
+
+<%- include("../partials/foot") %>
