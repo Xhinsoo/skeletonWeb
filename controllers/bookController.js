@@ -74,7 +74,21 @@ exports.book_create_get = asyncHandler(async (req, res, next) => {
 
 // Handle book create on POST.
 exports.book_create_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Book create POST");
+  const book = new Book({
+    title: req.body.title,
+    author: req.body.author,
+    summary: req.body.summary,
+    isbn: req.body.isbn,
+    genre: req.body.genre,
+  });
+
+  res.render("book_form", {
+    title: "Create Book",
+     allAuthors,
+     allGenres,
+     book,
+  });
+
 });
 
 // Display book delete form on GET.
