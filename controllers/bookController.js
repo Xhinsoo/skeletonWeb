@@ -2,6 +2,7 @@ const Book = require("../models/book");
 const Author = require("../models/author");
 const Genre = require("../models/genre");
 const BookInstance = require("../models/bookinstance");
+const { body, validationResult } = require("express-validator");
 
 const asyncHandler = require("express-async-handler");
 
@@ -65,10 +66,10 @@ exports.book_create_get = asyncHandler(async (req, res, next) => {
     Genre.find().sort({ name: 1 }).exec(),
   ]);
 
-  res.render("book_form", {
-    title: "Create Book",
-      allAuthors,
-      allGenres,
+  res.render("bookForm", {
+    title: "Create Book", 
+    authors: allAuthors,
+    genres: allGenres,
   });
 });
 
@@ -84,9 +85,9 @@ exports.book_create_post = asyncHandler(async (req, res, next) => {
 
   res.render("book_form", {
     title: "Create Book",
-     allAuthors,
-     allGenres,
-     book,
+    authors: allAuthors,
+    genres: allGenres,
+    book: book,
   });
 
 });

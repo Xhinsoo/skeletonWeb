@@ -1,0 +1,50 @@
+<%- include("../partials/head")  %><%- include("../partials/nav") %>
+    <h1>
+      <%= title %>
+    </h1>
+    <!-- action empty string sends data to same page -->
+    <form action="" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title: </label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Name of book"
+          name="title"          
+        />
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author:</label>
+        <select name="author" id="author" class="form-control">
+          <option value="">Please select an author</option>
+            <% for(let author of authors){ %>
+              <option value=""> <%=author.name %></option>    
+              <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="summary">Summary: </label>
+        <textarea name="summary" class="form-control" id="summary" placeholder="summary" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="ISBN">ISBN: </label>
+        <input type="text"  class="form-control" placeholder="isbn" name="isbn" required>
+      </div>
+      <div class="mb-3">
+       <label for="genre">Genre:</label>
+      <% for(let genre of genres){%>
+        <div style="display: inline; padding-right:10px">
+          <% if(genre.checked){ %>
+          <input type="checkbox" name="genre" id="<%genre._id%>" value="genre.id" checked>
+          <% } else{%>
+            <input type="checkbox" name="genre" id="<%genre._id%>" value="genre.id">
+          <label for="genre._id"><%=genre.name %></label>
+          <% } %>
+        </div>
+        <% } %>
+      </div>
+      
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <%- include("../partials/foot") %>
