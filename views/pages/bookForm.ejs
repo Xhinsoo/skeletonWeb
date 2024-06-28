@@ -2,7 +2,7 @@
     <h1>
       <%= title %>
     </h1>
-    <!-- action empty string sends data to same page -->
+    <!-- empty actions string sends data to same page -->
     <form action="" method="POST">
       <div class="mb-3">
         <label for="title" class="form-label">Title: </label>
@@ -13,6 +13,7 @@
           name="title"          
         />
       </div>
+      <!-- authors -->
       <div class="mb-3">
         <label for="author" class="form-label">Author:</label>
         <select name="author" id="author" class="form-control">
@@ -22,6 +23,7 @@
               <% } %>
         </select>
       </div>
+      <!-- summary -->
       <div class="mb-3">
         <label for="summary">Summary: </label>
         <textarea name="summary" class="form-control" id="summary" placeholder="summary" required></textarea>
@@ -30,6 +32,7 @@
         <label for="ISBN">ISBN: </label>
         <input type="text"  class="form-control" placeholder="isbn" name="isbn" required>
       </div>
+      <!-- genre -->
       <div class="mb-3">
        <label for="genre">Genre:</label>
       <% for(let genre of genres){%>
