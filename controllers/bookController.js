@@ -83,12 +83,9 @@ exports.book_create_post = asyncHandler(async (req, res, next) => {
     genre: req.body.genre,
   });
 
-  res.render("book_form", {
-    title: "Create Book",
-    authors: allAuthors,
-    genres: allGenres,
-    book: book,
-  });
+  await book.save();
+  res.redirect(book.url);
+
 
 });
 
