@@ -32,13 +32,12 @@ exports.index = asyncHandler(async (req, res, next) => {
   });
 });
 
-
 // Display list of all books.
 exports.book_list = asyncHandler(async (req, res, next) => {
   const allBooks = await Book.find({}, "title author")
-    .sort({title:1})
-    .populate("author")
-  res.render("booklist", {title: "All books", allBooks});
+    .sort({ title: 1 })
+    .populate("author");
+  res.render("booklist", { title: "All books", allBooks });
 });
 
 // Display detail page for a specific book.
@@ -48,15 +47,13 @@ exports.book_detail = asyncHandler(async (req, res, next) => {
     BookInstance.find({ book: req.params.id }).exec(),
   ]);
 
-  if(book === null){
+  if (book === null) {
     const err = new Error("book not found");
     err.status = 404;
-    return next(err)
+    return next(err);
   }
 
-
-
-  res.render("bookdetail",{title:book.title, book, bookInstances});
+  res.render("bookdetail", { title: book.title, book, bookInstances });
 });
 
 // Display book create form on GET.
@@ -67,7 +64,7 @@ exports.book_create_get = asyncHandler(async (req, res, next) => {
   ]);
 
   res.render("bookForm", {
-    title: "Create Book", 
+    title: "Create Book",
     authors: allAuthors,
     genres: allGenres,
   });
@@ -75,18 +72,18 @@ exports.book_create_get = asyncHandler(async (req, res, next) => {
 
 // Handle book create on POST.
 exports.book_create_post = asyncHandler(async (req, res, next) => {
-  const book = new Book({
-    title: req.body.title,
-    author: req.body.author,
-    summary: req.body.summary,
-    isbn: req.body.isbn,
-    genre: req.body.genre,
-  });
+  
+  // const book = new Book({
+  //   title: req.body.title,
+  //   author: req.body.author,
+  //   summary: req.body.summary,
+  //   isbn: req.body.isbn,
+  //   genre: req.body.genre,
+  // });
 
-  await book.save();
-  res.redirect(book.url);
-
-
+  // console.log(req.body);
+  // await book.save();
+  // res.redirect(book.url);
 });
 
 // Display book delete form on GET.
