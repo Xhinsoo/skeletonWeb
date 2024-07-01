@@ -43,8 +43,8 @@ exports.book_list = asyncHandler(async (req, res, next) => {
 // Display detail page for a specific book.
 exports.book_detail = asyncHandler(async (req, res, next) => {
   const [book, bookInstances] = await Promise.all([
-    Book.findById(req.params.id).populate("author").populate("genre").exec(),
-    BookInstance.find({ book: req.params.id }).exec(),
+    Book.findById(req.params.id).populate("author").populate("genre"),
+    BookInstance.find({ book: req.params.id })
   ]);
 
   if (book === null) {
